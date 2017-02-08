@@ -1,6 +1,7 @@
-
-# .v4p backup files
-*~.xml
-
-# Dynamic plugins .dll
-bin/
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
