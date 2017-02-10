@@ -1,5 +1,5 @@
-create table "records"(
+create table "day_records"(
 	"id" char(32) not null primary key,
 	"date" integer not null,
-	"value" integer
+	"value" float
 );
