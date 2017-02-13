@@ -6,15 +6,15 @@ import java.util.Date;
  * Created by zsr on 2017/2/10.
  */
 public class DayRecord {
-    private long id;
+    private String id;
     private Date date;
     private float value;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

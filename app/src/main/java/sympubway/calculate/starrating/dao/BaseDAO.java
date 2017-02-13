@@ -72,6 +72,15 @@ public abstract class BaseDAO {
         }
     }
 
+    protected Float getFloat(Cursor cursor, String columnName) {
+        int idx = cursor.getColumnIndex(columnName);
+        if (idx > -1) {
+            return cursor.getFloat(idx);
+        } else {
+            return null;
+        }
+    }
+
     protected String getStringValue(Cursor cursor, String columnName) {
         int idx = cursor.getColumnIndex(columnName);
         if (idx > -1) {
