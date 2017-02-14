@@ -9,6 +9,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import sympubway.calculate.starrating.dao.DayRecordDAO;
@@ -64,18 +65,24 @@ public class MainActivity extends AppCompatActivity {
 
     private float getAvgScore() {
         DayRecordDAO dao = new DayRecordDAO();
-        return 0;
-        //TODO
+        List<DayRecord> records = dao.getWholeList();
+        long sum = 0;
+        for (DayRecord item : records) {
+            sum += item.getValue();
+        }
+        float result = 0;
+        if (records.size() > 0) {
+            result = (float) Math.round(sum * 100 / records.size()) / 100;
+        }
+        return result;
     }
 
     private void writeStarNumberToDB(int numStars) {
         DayRecordDAO dao = new DayRecordDAO();
         DayRecord record = new DayRecord();
         record.setId(UUID.randomUUID().toString());
-        Date date = new Date();
-        //record.setDate();
+        record.setDate(AppHelper.getInstance().get2400(new Date()));
         record.setValue(numStars);
         dao.createNew(record);
-        //TODO
     }
 }

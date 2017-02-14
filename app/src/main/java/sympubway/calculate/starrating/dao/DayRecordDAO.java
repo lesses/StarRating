@@ -3,13 +3,16 @@ package sympubway.calculate.starrating.dao;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sympubway.calculate.starrating.entity.DayRecord;
 
 /**
  * Created by zsr on 2017/2/10.
  */
 public class DayRecordDAO extends BaseDAO {
-    private static final String TABLENAME = "monitorplaces";
+    private static final String TABLENAME = "day_records";
     private static final String[] columns = { "id", "date", "value" };
 
     public void createNew(DayRecord item) {
@@ -29,6 +32,17 @@ public class DayRecordDAO extends BaseDAO {
             return extractValue(c);
         }
         return null;
+    }
+
+    public List<DayRecord> getWholeList() {
+        Cursor c = super.findList(TABLENAME, columns);
+        List<DayRecord> list = new ArrayList<DayRecord>();
+        if (c != null) {
+            while (c.moveToNext()) {
+                list.add(extractValue(c));
+            }
+        }
+        return list;
     }
 
     public void update(DayRecord item) {
