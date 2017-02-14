@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">StarRating</string>
+    <string name="alert_confirm_rating">Are you sure of this rating?</string>
+    <string name="alert_confirm">Confirm</string>
+    <string name="alert_cancel">Cancel</string>
 </resources>
