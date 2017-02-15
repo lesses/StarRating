@@ -106,6 +106,12 @@ public abstract class BaseDAO {
         return cursor;
     }
 
+    protected Cursor loadByDate(String table, String date, String[] columns) {
+        SQLiteDatabase db = dbMgr.get();
+        Cursor cursor = db.query(table, columns, " date = ?", new String[] { String.valueOf(date) }, null, null, null, null);
+        return cursor;
+    }
+
     protected void updateItem(String tablename, ContentValues values, String id) {
         SQLiteDatabase db = dbMgr.get();
         db.update(tablename, values, " id = ?", new String[] { String.valueOf(id) });

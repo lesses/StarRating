@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import sympubway.calculate.starrating.entity.DayRecord;
@@ -27,6 +28,15 @@ public class DayRecordDAO extends BaseDAO {
 
     public DayRecord load(String id) {
         Cursor c = super.loadById(TABLENAME, id, columns);
+        if (c != null && c.moveToFirst()) {
+            c.moveToFirst();
+            return extractValue(c);
+        }
+        return null;
+    }
+
+    public DayRecord loadByDate(Date date) {
+        Cursor c = super.loadByDate(TABLENAME, String.valueOf(helper.dateToEpoch(date)), columns);
         if (c != null && c.moveToFirst()) {
             c.moveToFirst();
             return extractValue(c);
