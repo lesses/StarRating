@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(final RatingBar ratingBar, final float rating, boolean fromUser) {
-                if (ratingBar.getRating() != 0) {
+                if (fromUser) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setMessage(R.string.alert_confirm_rating)
                             .setPositiveButton(R.string.alert_confirm, new DialogInterface.OnClickListener() {
@@ -69,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
         Float value = dateValue(new Date());
         if (value != null) {
             ratingBar.setIsIndicator(true);
-            ratingBar.setNumStars((int)(float)value);
+            ratingBar.setRating(value);
+
         }
     }
 
