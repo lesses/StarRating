@@ -16,7 +16,7 @@ import sympubway.calculate.starrating.entity.DayRecord;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int MAXS_SCORE = 5;
+    public static final int NUM_STARS = 5;
     private TextView scoreText;
     private AppHelper helper = AppHelper.getInstance();
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // Setup the rating bar, especially when you have rated
         RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         //TODO 设置rating star数量
-        //ratingBar.setMax(this.MAXS_SCORE);
+        ratingBar.setNumStars(this.NUM_STARS);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(final RatingBar ratingBar, final float rating, boolean fromUser) {
